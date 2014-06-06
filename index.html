@@ -46,17 +46,18 @@ $ git checkout gh-pages
 <h3>Dump of information sent/recived from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/recieved from hitbox. I will clean it up when I get more time.</p>
 <pre>
-  <code>getChannelUserList
+  <code>
+getChannelUserList
 5:::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}
 
 getChannelUser
 5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}
 
 userInfo
-5:::{"name":"message","args":["{\"method\":\"userInfo\",\"params\":{\"channel\":\"hitakashi\",\"name\":\"hitabot\",\"timestamp\":1402039949,\"role\":\"banned\",\"banned\":true}}"]}
+5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}
 
 userList
-5:::{"name":"message","args":["{\"method\":\"userList\",\"params\":{\"channel\":\"hitakashi\",\"data\":{\"Guests\":1,\"admin\":[\"Hitakashi\"],\"user\":[],\"anon\":[\"Hitabot\"],\"isFollower\":[],\"isSubscriber\":[],\"isStaff\":[]}}}"]}
+5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":1,"admin":["Hitakashi"],"user":[],"anon":["Hitabot"],"isFollower":[],"isSubscriber":[],"isStaff":[]}}}"]}
 
 makeMod
 5:::{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
@@ -73,16 +74,17 @@ unbanUser
 5:::{"name":"message","args":[{"method":"unbanUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
 
 banList
-5:::{"name":"message","args":["{\"method\":\"banList\",\"params\":{\"channel\":\"hitakashi\",\"data\":[\"hitabot\"]}}"]}
+5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}
 
 kickUser
 5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
 
 infoMsg
-5:::{"name":"message","args":["{\"method\":\"infoMsg\",\"params\":{\"text\":\"You have added Hitabot as a moderator\",\"channel\":\"hitakashi\",\"timestamp\":1402039745,\"action\":\"isAdmin\"}}"]}
+5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}
 
 chatMsg
-5:::{"name":"message","args":["{\"method\":\"chatMsg\",\"params\":{\"channel\":\"hitakashi\",\"name\":\"Hitabot\",\"nameColor\":\"FF0000\",\"text\":\"111\",\"time\":1402040183,\"role\":\"anon\",\"isFollower\":false,\"isSubscriber\":false,\"isOwner\":false,\"isStaff\":false,\"media\":false}}"]}
+5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitabot","nameColor":"FF0000","text":"111","time":1402040183,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false,"media":false}}"]}
+
 
 </code>
 </pre>
