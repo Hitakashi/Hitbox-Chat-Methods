@@ -46,11 +46,19 @@ $ git checkout gh-pages
 <h1><a name="broadcaster-info"><span class="octicon octicon-link"></span></a>Broadcaster Information</h1>
 <p>This section contains any info sent/received from the chat that differs from Moderator or User information</p>
 
+<h3>Grant Moderator (makeMod)</h3>
+<p><strong>sent</strong> when you mod a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
+
+<h3>Remove Moderator (removeMod)</h3>
+<p><strong>sent</strong> when you unmod a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
+5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
+
 <h1><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h1>
 <p>This section contains any info sent/received from the chat that differs from User information</p>
 
 <h3>Banned User Info (userInfo - Banned User)</h3>
-<p><b>received</b> when you send <b>getChannelUser</b> on a banned user</p>
+<p><strong>received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
 <pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</pre></code>
 
 <h1><a name="user-info" class="anchor"><span class="octicon octicon-link"></span></a>User Information</h1>
@@ -69,7 +77,7 @@ $ git checkout gh-pages
 <pre><code>5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}</pre></code>
 
 <h3>User Info (userInfo)</h3>
-<p><b>Received</b> when you send <b>getChannelUser</b></p>
+<p><strong>Received</strong> when you send <strong>getChannelUser</strong></p>
 <pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</pre></code>
 
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
