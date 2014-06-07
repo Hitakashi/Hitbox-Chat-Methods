@@ -55,7 +55,7 @@ $ git checkout gh-pages
 <pre><code>5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>IP Ban User (banUser)</h3>
-<p><strong>Sent</strong> when you IP ban a user. <strong>Broadcaster Only.</strong><em>Don't try this on an account on your IP ;)</em></p>
+<p><strong>Sent</strong> when you IP ban a user. <strong>Broadcaster Only.</strong> <em>Don't try this on an account on your IP ;)</em></p>
 <pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":"","banIP":true}}]}</code></pre>
 
 <h1><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h1>
@@ -72,6 +72,10 @@ $ git checkout gh-pages
 <h3>Banned User Info (userInfo - Banned User)</h3>
 <p><strong>received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
 <pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</pre></code>
+
+<h3>User Ban List (banList)</h3>
+<p><strong>Sent</strong> when you ban/unban a user and when there's a banned user in the room.</p>
+<pre><code>5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}</code></pre>
 
 <h1><a name="user-info" class="anchor"><span class="octicon octicon-link"></span></a>User Information</h1>
 <p>This section contains any info sent/received from the chat that is sent to users.</p>
@@ -99,8 +103,7 @@ $ git checkout gh-pages
 <pre>
   <code>
 
-banList - <strong>sent</strong> when you ban/unban a user. (I think it sends when you opne the viewer list as well)
-5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}
+
 
 kickUser - <strong>sent</strong> when you timeout a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.
 5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
