@@ -42,13 +42,15 @@ $ git checkout gh-pages
 </code></pre>
 
 <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>-->
-
+<!-- \\\\\\\\\\\\\\\\
+BROADCASTER Information
+\\\\\\\\\\\\\\\\\\\ -->
 <h1><a name="broadcaster-info"><span class="octicon octicon-link"></span></a>Broadcaster Information</h1>
 <p>This section contains any info sent/received from the chat that differs from Moderator or User information</p>
 
 <h3>Grant Moderator (makeMod)</h3>
 <p><strong>Sent</strong> when you mod a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
-<pre>{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</pre>
+<pre><code>5:::{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Remove Moderator (removeMod)</h3>
 <p><strong>Sent</strong> when you unmod a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
@@ -57,6 +59,10 @@ $ git checkout gh-pages
 <h3>IP Ban User (banUser)</h3>
 <p><strong>Sent</strong> when you IP ban a user. <strong>Broadcaster Only.</strong> <em>Don't try this on an account on your IP ;)</em></p>
 <pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":"","banIP":true}}]}</code></pre>
+
+<!-- \\\\\\\\\\\\\\\\
+MODERATOR Information
+\\\\\\\\\\\\\\\\\\\ -->
 
 <h1><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h1>
 <p>This section contains any info sent/received from the chat that differs from User information</p>
@@ -67,15 +73,28 @@ $ git checkout gh-pages
 
 <h3>Unban User (unbanUser)</h3>
 <p><strong>sent</strong> when you unban a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users.</p>
-<pre><code>5:::{"name":"message","args":[{"method":"unbanUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</pre></code>
+<pre><code>5:::{"name":"message","args":[{"method":"unbanUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Banned User Info (userInfo - Banned User)</h3>
 <p><strong>received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
-<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</pre></code>
+<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</code></pre>
 
 <h3>User Ban List (banList)</h3>
 <p><strong>Sent</strong> when you ban/unban a user and when there's a banned user in the room.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}</code></pre>
+
+<h3>Timeout User (kickUser)</h3>
+<p><strong>sent</strong> when you timeout a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
+
+<h3>Enable Slow Mode (slowMode)</h3>
+<p><strong>Sent</strong> when you enable slow mode. Disable slow mode is time = 0</p>
+<pre><code>5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"hitakashi","time":10}}]}</code></pre>
+
+
+<!-- \\\\\\\\\\\\\\\\
+USER Information
+\\\\\\\\\\\\\\\\\\\ -->
 
 <h1><a name="user-info" class="anchor"><span class="octicon octicon-link"></span></a>User Information</h1>
 <p>This section contains any info sent/received from the chat that is sent to users.</p>
@@ -90,11 +109,16 @@ $ git checkout gh-pages
 
 <h3>Request User Info (getChannelUser)</h3>
 <p><strong>Sent</strong> when you click on a User</p>
-<pre><code>5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}</pre></code>
+<pre><code>5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}</code></pre>
 
 <h3>User Info (userInfo)</h3>
 <p><strong>Received</strong> when you send <strong>getChannelUser</strong></p>
-<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</pre></code>
+<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</code></pre>
+
+<h3>Slow Mode Information (slowMsg)</h3>
+<p><strong>Received</b> when slow mode is enabled/disabled or when you join a channel with slow mode enabled. <em>Note: Even if you aren't an Admin, it contains the action:isAdmin</em></p>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}</code></pre>
+
 
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
@@ -102,12 +126,6 @@ $ git checkout gh-pages
 <p>Currently, This is all I have. I will be going back and redoing it as Moderator and User sections later.</p>
 <pre>
   <code>
-
-
-
-kickUser - <strong>sent</strong> when you timeout a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.
-5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
-
 infoMsg - <strong>received</strong> on mod/unmod/ban/unban/timeout 
 5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}
 
@@ -116,7 +134,6 @@ chatMsg - <strong>sent</strong> and <strong>received</strong> on every chat mess
 
 slowMode - <strong>sent</strong> when you enable slow mode. Disable slow mode is time = 0
 5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"hitakashi","time":10}}]}
-
 slowMsg - <strong>received</strong> when you enable slow mode.
 5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}
 </code>
