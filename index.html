@@ -58,17 +58,18 @@ $ git checkout gh-pages
 5::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}
 </code></pre>
 
+<h4>User List</h4>userList - <strong>received</strong> when you send <strong>getChannelUserList</strong>. Admins can consist of a broadcaster and Hitbox Staff. Users are moderators. Anon is viewers.
+<pre><code>5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":1,"admin":["Hitakashi"],"user":[],"anon":["Hitabot"],"isFollower":[],"isSubscriber":[],"isStaff":[]}}}"]}</code></pre>
+
+
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
 <p>Also note that all these were taken under the "Hitakashi" account while doing actions onto "Hitabot" inside the "Hitakashi" channel. Anything that has "Token" requires the token.</p>
 <p>Currently, This is all I have. I will be going back and redoing it as Moderator and User sections later.</p>
 <pre>
   <code>
-getChannelUserList - <b>sent</b> what you open the User List
-5:::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}
 
-userList - <b>received</b> when you send <b>getChannelUserList</b>. Admins can consist of a broadcaster and Hitbox Staff. Users are moderators. Anon is viewers.
-5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":1,"admin":["Hitakashi"],"user":[],"anon":["Hitabot"],"isFollower":[],"isSubscriber":[],"isStaff":[]}}}"]}
+
 
 getChannelUser - <b>sent</b> when you click on a User
 5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}
