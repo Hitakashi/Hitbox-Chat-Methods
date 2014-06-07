@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+	<link rel="stylesheet" href="stylesheets/dark.css">
+	<script src="highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -47,12 +50,12 @@ $ git checkout gh-pages
 <p>This section contains any info sent/received from the chat that differs from Moderator or User information</p>
 
 <h3>Grant Moderator (makeMod)</h3>
-<p><strong>sent</strong> when you mod a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
+<p><strong>Sent</strong> when you mod a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Remove Moderator (removeMod)</h3>
-<p><strong>sent</strong> when you unmod a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
-5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
+<p><strong>Sent</strong> when you unmod a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h1><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h1>
 <p>This section contains any info sent/received from the chat that differs from User information</p>
