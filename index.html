@@ -49,6 +49,14 @@ COMMON Information
 <h1><a name="common-info"><span class="octicon octicon-link"></span></a>Common Information</h1>
 <p>This section contains common info that you might need.</p>
 
+<h3>Ping</h3>
+<p><strong>Received</strong> every few seconds. You must respond with a Pong</p>
+<pre><code>2::</code></pre>
+
+<h3>Pong</h3>
+<p><strong>Sent</strong> when you <strong>received</strong> a ping. (If you do not, it will kick you from the chat server.)</p>
+<pre><code>2::</code></pre>
+
 <h3>Join Channel (joinChannel)</h3>
 <p><strong>Sent</strong> when you join a channel.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"joinChannel","params":{"channel":"hitakashi","name":"Hitakashi","token":"","isAdmin":true}}]}</code></pre>
