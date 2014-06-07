@@ -54,8 +54,8 @@ $ git checkout gh-pages
 <p><strong>Sent</strong> when you unmod a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
-<h3>Ban User (banUser - IP Ban)</h3>
-<p><strong>sent</strong> when you IP ban a user. <strong>Broadcaster Only</strong> <strong>Currently, this will ban your IP if you test it on an alt account</strong></p>
+<h3>IP Ban User (banUser)</h3>
+<p><strong>Sent</strong> when you IP ban a user. <strong>Broadcaster Only.</strong><em>Don't try this on an account on your IP ;)</em></p>
 <pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":"","banIP":true}}]}</code></pre>
 
 <h1><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h1>
