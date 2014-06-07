@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
     <link rel="stylesheet" href="stylesheets/default.css" type='text/css'>
     <script src="highlight.pack.js" type='text/javascript'></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>$(document).ready(function() {
+  $('section pre code').each(function(i, e) {hljs.highlightBlock(e)});
+});</script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -52,11 +54,10 @@ $ git checkout gh-pages
 
 <h3>Channel User List (getChannelUserList)</h3>
 <p><strong>Sent</strong> when you open the User List</p>
-</section>
 <pre><code>
 {"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}
 </code></pre>
-<section>
+
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
 <p>Also note that all these were taken under the "Hitakashi" account while doing actions onto "Hitabot" inside the "Hitakashi" channel. Anything that has "Token" requires the token.</p>
