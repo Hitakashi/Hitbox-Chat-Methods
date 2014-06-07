@@ -49,6 +49,10 @@ $ git checkout gh-pages
 <h2><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h2>
 <p>This section contains any info sent/received from the chat that differs from User information</p>
 
+<h4>Banned User Info (userInfo - Banned User)</h4>
+<p><b>received</b> when you send <b>getChannelUser</b> on a banned user</p>
+<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</pre></code>
+
 <h2><a name="user-info" class="anchor"><span class="octicon octicon-link"></span></a>User Information</h2>
 <p>This section contains any info sent/received from the chat that is sent to users.</p>
 
@@ -67,10 +71,6 @@ $ git checkout gh-pages
 <h4>User Info (userInfo)</h4>
 <p><b>Received</b> when you send <b>getChannelUser</b></p>
 <pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</pre></code>
-
-<h4>Banned User Info (userInfo - Banned User)</h4>
-<p><b>received</b> when you send <b>getChannelUser</b> on a banned user</p>
-<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</pre></code>
 
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
