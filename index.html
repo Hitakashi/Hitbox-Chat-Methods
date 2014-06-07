@@ -7,9 +7,6 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-	<link rel="stylesheet" href="stylesheets/dark.css">
-	<script src="highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -57,8 +54,20 @@ $ git checkout gh-pages
 <p><strong>Sent</strong> when you unmod a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
+<h3>Ban User (banUser - IP Ban)</h3>
+<p><strong>sent</strong> when you IP ban a user. <strong>Broadcaster Only</strong> <strong>Currently, this will ban your IP if you test it on an alt account</strong></p>
+<pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":"","banIP":true}}]}</code></pre>
+
 <h1><a name="moderator-info" class="anchor"><span class="octicon octicon-link"></span></a>Moderator Information</h1>
 <p>This section contains any info sent/received from the chat that differs from User information</p>
+
+<h3>Ban User (banUser)</h3>
+<p><strong>sent</strong> when you ban a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users. <em>Note: If a broadcaster bans a moderator, it does remove moderator as well</em></p>
+<pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
+
+<h3>Unban User (unbanUser)</h3>
+<p><strong>sent</strong> when you unban a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"unbanUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</pre></code>
 
 <h3>Banned User Info (userInfo - Banned User)</h3>
 <p><strong>received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
@@ -89,37 +98,23 @@ $ git checkout gh-pages
 <p>Currently, This is all I have. I will be going back and redoing it as Moderator and User sections later.</p>
 <pre>
   <code>
-makeMod - <b>sent</b> when you mod a user. <b>receives</b> a <b>infoMsg</b> telling you it was successful.
-5:::{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
 
-removeMod - <b>sent</b> when you unmod a user. <b>receives</b> a <b>infoMsg</b> telling you it was successful.
-5:::{"name":"message","args":[{"method":"removeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
-
-banUser - <b>sent</b> when you ban a user. <b>receives</b> a <b>infoMsg</b> telling you it was successful. <b>receives</b> a <b>banList</b> with banned users.
-5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
-
-banUser (IP Ban) - <b>sent</b> when you IP ban a user. <b>Broadcaster Only</b> <b>Currently, this will ban your IP if you test it on an alt account</b>
-5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":"","banIP":true}}]}
-
-unbanUser - <b>sent</b> when you unban a user. <b>receives</b> a <b>infoMsg</b> telling you it was successful. <b>receives</b> a <b>banList</b> with banned users.
-5:::{"name":"message","args":[{"method":"unbanUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
-
-banList - <b>sent</b> when you ban/unban a user. (I think it sends when you opne the viewer list as well)
+banList - <strong>sent</strong> when you ban/unban a user. (I think it sends when you opne the viewer list as well)
 5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}
 
-kickUser - <b>sent</b> when you timeout a user. <b>receives</b> a <b>infoMsg</b> telling you it was successful.
+kickUser - <strong>sent</strong> when you timeout a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.
 5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
 
-infoMsg - <b>received</b> on mod/unmod/ban/unban/timeout 
+infoMsg - <strong>received</strong> on mod/unmod/ban/unban/timeout 
 5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}
 
-chatMsg - <b>sent</b> and <b>received</b> on every chat message. Includes media if broadcaster.
+chatMsg - <strong>sent</strong> and <strong>received</strong> on every chat message. Includes media if broadcaster.
 5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitabot","nameColor":"FF0000","text":"111","time":1402040183,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false,"media":false}}"]}
 
-slowMode - <b>sent</b> when you enable slow mode. Disable slow mode is time = 0
+slowMode - <strong>sent</strong> when you enable slow mode. Disable slow mode is time = 0
 5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"hitakashi","time":10}}]}
 
-slowMsg - <b>received</b> when you enable slow mode.
+slowMsg - <strong>received</strong> when you enable slow mode.
 5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}
 </code>
 </pre>
