@@ -54,9 +54,7 @@ $ git checkout gh-pages
 
 <h4>Channel User List (getChannelUserList)</h4>
 <p><strong>Sent</strong> when you open the User List.
-<pre><code>
-5::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}
-</code></pre>
+<pre><code>5::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}</code></pre>
 
 <h4>User List (userList)</h4>
 <p><strong>Received</strong> when you send <strong>getChannelUserList</strong>. Admins can consist of a Broadcaster and Hitbox Staff. Users are Moderators. Anon are Viewers.</p>
@@ -72,7 +70,7 @@ $ git checkout gh-pages
 
 <h4>Banned User Info (userInfo - Banned User)</h4>
 <p><b>received</b> when you send <b>getChannelUser</b> on a banned user</p>
-5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}
+<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</pre></code>
 
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
