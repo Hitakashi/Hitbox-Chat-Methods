@@ -42,6 +42,40 @@ $ git checkout gh-pages
 </code></pre>
 
 <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>-->
+
+<!-- \\\\\\\\\\\\\\\\
+COMMON Information
+\\\\\\\\\\\\\\\\\\\ -->
+<h1><a name="common-info"><span class="octicon octicon-link"></span></a>Common Information</h1>
+<p>This section contains common info that you might need.</p>
+
+<h3>Join Channel (joinChannel)</h3>
+<p><strong>Sent</strong> when you join a channel.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"joinChannel","params":{"channel":"hitakashi","name":"Hitakashi","token":"","isAdmin":true}}]}</code></pre>
+
+<h3>Leave Channel (partChannel)</h3>
+<p><strong>Sent</strong> when you want to part a channel.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"partChannel","params":{"channel":"hitakashi","name":"Hitakashi"}}]}</code></pre>
+
+<h3>Informational Messages (infoMsg)</h3>
+<p><strong>Received</strong> on mod/unmod/ban/unban/timeout</p>
+<pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}</code></pre>
+
+<h3>Chat Message (chatMsg)</h3>
+<p><strong>Sent</strong> and <strong>Received</strong> on every chat message. Includes media if broadcaster.</p>
+<p><strong>Sent</strong></p>
+<pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitakashi","nameColor":"FA58F4","text":"haha"}}]}</code></pre>
+<p><strong>Received</strong></p>
+<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitabot","nameColor":"FF0000","text":"111","time":1402040183,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false,"media":false}}"]}</code</pre>
+
+<h3>Login to chat as a guest (Anonymous)</h3>
+<p><strong>Sent</strong> to chat while logged out of an account or when you want to login anonymously. (CANNOT CHAT)</p>
+<pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"UnknownSoldier","role":"guest"}}"]}</code></pre>
+
+<h3>Join channel while a guest (Anonymous)</h3>
+<p><strong>Sent</strong> while logged out of an account or anonymous login. (CANNOT CHAT)</p>
+<pre><code>5:::{"name":"message","args":[{"method":"joinChannel","params":{"channel":"hitakashi","name":"UnknownSoldier","token":null,"isAdmin":false}}]}</code></pre>
+
 <!-- \\\\\\\\\\\\\\\\
 BROADCASTER Information
 \\\\\\\\\\\\\\\\\\\ -->
@@ -119,25 +153,6 @@ USER Information
 <p><strong>Received</b> when slow mode is enabled/disabled or when you join a channel with slow mode enabled. <em>Note: Even if you aren't an Admin, it contains the action:isAdmin</em></p>
 <pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}</code></pre>
 
-
-<h3>Dump of information sent/received from the Hitbox Chat.</h3>
-<p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
-<p>Also note that all these were taken under the "Hitakashi" account while doing actions onto "Hitabot" inside the "Hitakashi" channel. Anything that has "Token" requires the token.</p>
-<p>Currently, This is all I have. I will be going back and redoing it as Moderator and User sections later.</p>
-<pre>
-  <code>
-infoMsg - <strong>received</strong> on mod/unmod/ban/unban/timeout 
-5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}
-
-chatMsg - <strong>sent</strong> and <strong>received</strong> on every chat message. Includes media if broadcaster.
-5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitabot","nameColor":"FF0000","text":"111","time":1402040183,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false,"media":false}}"]}
-
-slowMode - <strong>sent</strong> when you enable slow mode. Disable slow mode is time = 0
-5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"hitakashi","time":10}}]}
-slowMsg - <strong>received</strong> when you enable slow mode.
-5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}
-</code>
-</pre>
 <!--<h3>
 <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
