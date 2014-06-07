@@ -53,14 +53,26 @@ $ git checkout gh-pages
 <p>This section contains any info sent/received from the chat that is sent to users.</p>
 
 <h4>Channel User List (getChannelUserList)</h4>
-<p><strong>Sent</strong> when you open the User List</p>
+<p><strong>Sent</strong> when you open the User List.
 <pre><code>
 5::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}
 </code></pre>
 
-<h4>User List</h4>userList - <strong>received</strong> when you send <strong>getChannelUserList</strong>. Admins can consist of a broadcaster and Hitbox Staff. Users are moderators. Anon is viewers.
+<h4>User List (userList)</h4>
+<p><strong>Received</strong> when you send <strong>getChannelUserList</strong>. Admins can consist of a Broadcaster and Hitbox Staff. Users are Moderators. Anon are Viewers.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":1,"admin":["Hitakashi"],"user":[],"anon":["Hitabot"],"isFollower":[],"isSubscriber":[],"isStaff":[]}}}"]}</code></pre>
 
+<h4>Request User Info (getChannelUser)</h4>
+<p><strong>Sent</strong> when you click on a User</p>
+<pre><code>5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}</pre></code>
+
+<h4>User Info (userInfo)</h4>
+<p><b>Received</b> when you send <b>getChannelUser</b></p>
+<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</pre></code>
+
+<h4>Banned User Info (userInfo - Banned User)</h4>
+<p><b>received</b> when you send <b>getChannelUser</b> on a banned user</p>
+5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}
 
 <h3>Dump of information sent/received from the Hitbox Chat.</h3>
 <p>For now I'll just be dumping everything that I have found the chat sends/received from hitbox. I will clean it up when I get more time.</p>
@@ -68,18 +80,6 @@ $ git checkout gh-pages
 <p>Currently, This is all I have. I will be going back and redoing it as Moderator and User sections later.</p>
 <pre>
   <code>
-
-
-
-getChannelUser - <b>sent</b> when you click on a User
-5:::{"name":"message","args":[{"method":"getChannelUser","params":{"channel":"hitakashi","name":"hitabot"}}]}
-
-userInfo - <b>received</b> when you send <b>getChannelUser</b>
-5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}
-
-userInfo (Banned User) - <b>received</b> when you send <b>getChannelUser</b> on a banned user
-5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}
-
 makeMod - <b>sent</b> when you mod a user. <b>receives</b> a <b>infoMsg</b> telling you it was successful.
 5:::{"name":"message","args":[{"method":"makeMod","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}
 
