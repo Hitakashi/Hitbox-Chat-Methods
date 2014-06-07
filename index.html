@@ -110,15 +110,15 @@ MODERATOR Information
 <p>This section contains any info sent/received from the chat that differs from User information</p>
 
 <h3>Ban User (banUser)</h3>
-<p><strong>sent</strong> when you ban a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users. <em>Note: If a broadcaster bans a moderator, it does remove moderator as well</em></p>
+<p><strong>Sent</strong> when you ban a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users. <em>Note: If a broadcaster bans a moderator, it does remove moderator as well</em></p>
 <pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Unban User (unbanUser)</h3>
-<p><strong>sent</strong> when you unban a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users.</p>
+<p><strong>Sent</strong> when you unban a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>receives</strong> a <strong>banList</strong> with banned users.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"unbanUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Banned User Info (userInfo - Banned User)</h3>
-<p><strong>received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
+<p><strong>Received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
 <pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</code></pre>
 
 <h3>User Ban List (banList)</h3>
@@ -126,7 +126,7 @@ MODERATOR Information
 <pre><code>5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}</code></pre>
 
 <h3>Timeout User (kickUser)</h3>
-<p><strong>sent</strong> when you timeout a user. <strong>receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
+<p><strong>Sent</strong> when you timeout a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Enable Slow Mode (slowMode)</h3>
