@@ -160,47 +160,54 @@ USER Information
 
 <h3>Slow Mode Information (slowMsg)</h3>
 <p><strong>Received</b> when slow mode is enabled/disabled or when you join a channel with slow mode enabled. <em>Note: Even if you aren't an Admin, it contains the action:isAdmin</em></p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}</code></pre>
 
 <h1><a name="user-info" class="anchor"><span class="octicon octicon-link"></span></a>Raffle/Giveaway/Sticky Dump</h1>
 <p>This section contains a dump of all the information that I have found for the dashboard options.</p>
 
-5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Test","choices":[{"text":"Test","votes":"0"},{"text":"Test","votes":"0"}],"start_time":"2014-06-09T01:26:26.450Z","clientID":null,"status":"started","voters":[],"nameColor":"585858","votes":0}}"]}
-<br />
-<br />
+<h3>Poll (Create)</h3>
+<p><strong>Sent</strong> to the chat to create a poll. I don't really understand the $$hashKey, maybe you can just send it like that, or the website replaced it before it's sent.</p>	
+<pre><code>5:::{"name":"message","args":[{"method":"createPoll","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":0,"win":false,"$$hashKey":"00M"},{"text":"Poll Option 2","votes":0,"win":false,"$$hashKey":"00N"}],"token":"","start_time":"2014-06-09T02:15:01.537Z","nameColor":"585858"}}]}</code></pre>
 
-5:::{"name":"message","args":[{"method":"endPoll","params":{"channel":"hitakashi","token":""}}]}
-<br />
-<br />
+<h3>Poll (Info)</h3>
+<p><strong>Received</strong> from the server. It includes information on the poll and number of votes. Status can include 'started', 'paused', and 'ended'</p>
+<pre><code>?5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"0"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"started","voters":[],"nameColor":"585858","votes":0}}"]}</code></pre>
+<p>Ended pollMsg</p>
+<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}"]}</code></pre>
 
-5:::{"name":"message","args":[{"method":"startPoll","params":{"channel":"hitakashi","token":""}}]}
-<br />
-<br />
+<h3>Poll (Pause)</h3>
+<p><strong>Sent</strong> to the chat server. Once you pause a poll, you can either start it back up or end it</p>
+<pre><code>5:::{"name":"message","args":[{"method":"pausePoll","params":{"channel":"hitakashi","token":""}}]}</code></pre>
 
-5:::{"name":"message","args":[{"method":"createPoll","params":{"channel":"hitakashi","question":"Test","choices":[{"text":"Test","votes":0,"$$hashKey":"026"},{"text":"Test","votes":0,"$$hashKey":"027"}],"token":"","start_time":"2014-06-09T01:26:51.467Z","nameColor":"585858"}}]}
-<br />
-<br />
+<h3>Poll (Start)</h3>
+<p><strong>Sent</strong> to the chat server. This can only be used to start it up after a pause.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"startPoll","params":{"channel":"hitakashi","token":""}}]}</code></pre>
 
-5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}"]}
-<br />
-<br />
+<h3>Poll (End)</h3>
+<p><strong>Sent</strong> to the chat server. This completely ends the poll and deletes it. You must pause it before ending it.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"endPoll","params":{"channel":"hitakashi","token":""}}]}</code></pre>
 
-5:::{"name":"message","args":[{"method":"pausePoll","params":{"channel":"hitakashi","token":""}}]}	
-<br />
-<br />
+<h3>Poll (Vote)</h3>
+<p><strong>Sent</strong> to the chat server. This is to vote on a open polll. Choices start from 0 (Choice 1) and up.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"votePoll","params":{"name":"Hitakashi","channel":"hitakashi","choice":"0","token":""}}]}</code></pre>
 
 <!-- MOTD -->
-5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Test!","time":"2014-06-09T01:30:22.271Z"}}]}
-<br />
-<br />
+<h3>Sticky Message (Create)</h3>
+<p><strong>Sent</strong> to the chat to create the MOTD</p>
+<pre><code>5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Lalalalalala","time":"2014-06-09T02:06:18.263Z"}}]}</code></pre>
 
-5:::{"name":"message","args":["{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Test!","time":1402277421,"image":"/static/img/channel/Hitakashi_539002d3589e8_small.png"}}"]}
-<br />
-<br />
+<h3>Sticky Message (View)</h3>
+<p><strong>Received</strong> from the chat. This is basically sent to everyone in chat. It's also sent inside the dashboard when you create the Sticky</p>
+<pre><code>5:::{"name":"message","args":["{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Lalalalalala","time":1402279577,"image":"/static/img/channel/Hitakashi_539002d3589e8_small.png"}}"]}</code></pre>
 
-5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"","time":"2014-06-09T01:31:26.277Z"}}]}
-<br />
-<br />
+<h3>Sticky Message (Delete)</h3>
+<p><strong>Sent</strong> to the chat to delete the sticky message.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"","time":"2014-06-09T02:10:17.756Z"}}]}</code></pre>
+
+<h3>Sticky Message (Cleared)</h3>
+<p><strong>Received</strong> from the chat. This is sent to everyone in chat to clear the Sticky Message</p>
+<pre><code>5:::{"name":"message","args":["{\"method\":\"motdMsg\",\"params\":{\"channel\":\"hitakashi\",\"name\":\"hitakashi\",\"nameColor\":\"585858\",\"time\":1402279816,\"image\":\"/static/img/channel/Hitakashi_539002d3589e8_small.png\"}}"]}</code></pre>
+
 
 <!-- Giveaway --> 
 5:::{"name":"message","args":[{"method":"createRaffle","params":{"channel":"hitakashi","question":"Giveaway Title","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1","votes":0,"$$hashKey":"00Q"},{"text":"Giveaway Options 2","votes":0,"$$hashKey":"00R"},{"text":"Giveaway Options 3","votes":0,"win":false,"$$hashKey":"02U"}],"start_time":"2014-06-09T01:32:56.646Z","nameColor":"585858"}}]}
@@ -251,6 +258,28 @@ USER Information
 5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}
 <br />
 <br />
+
+
+<!--<h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+
+<h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>-->
+
 	   </section>
 
         <footer>
