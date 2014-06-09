@@ -225,14 +225,14 @@ STICKY Info
 <p><strong>Sent</strong> to the chat server. This is to create the poll.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"createRaffle","params":{"channel":"hitakashi","question":"Giveaway Question","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1","votes":0,"$$hashKey":"00Q"},{"text":"Giveaway Option 2","votes":0,"$$hashKey":"00R"}],"start_time":"2014-06-09T03:22:49.081Z","nameColor":"585858"}}]}</code></pre>
 
-<h3>Raffle (Info - Viewer)</h3>
+<h3>Raffle (Info)</h3>
 <p><strong>Received</strong> from the chat server. This is for regular viewers, without counts for each option. Status includes 'started', 'paused', 'ended', 'hidden' and 'deleted'</p>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Giveaway Question","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1"},{"text":"Giveaway Option 2"}],"start_time":"2014-06-09T03:32:25.259Z","status":"started","forAdmin":false,"nameColor":"585858"}}"]}</code></pre>
 
 <p>Raffle (Info - Admin)</p>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Giveaway Question","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1","count":0},{"text":"Giveaway Option 2","count":0}],"start_time":"2014-06-09T03:32:25.259Z","status":"started","forAdmin":true,"nameColor":"585858"}}"]}</code></pre>
 
-<p>Raffle (Info - Deleted</p>
+<p>Raffle (Info - Deleted)</p>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}</code></pre>
 
 <h3>Raffle (Vote)</h3>
