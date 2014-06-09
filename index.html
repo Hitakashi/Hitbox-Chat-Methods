@@ -162,7 +162,7 @@ USER Information
 <p><strong>Received</b> when slow mode is enabled/disabled or when you join a channel with slow mode enabled. <em>Note: Even if you aren't an Admin, it contains the action:isAdmin</em></p>
 <pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}</code></pre>
 
-<h1><a name="user-info" class="anchor"><span class="octicon octicon-link"></span></a>Raffle/Giveaway/Sticky Dump</h1>
+<h1><a name="poll-info" class="anchor"><span class="octicon octicon-link"></span></a>Poll Information</h1>
 <p>This section contains a dump of all the information that I have found for the dashboard options.</p>
 
 <h3>Poll (Create)</h3>
@@ -194,7 +194,13 @@ USER Information
 <p><strong>Sent</strong> to the chat server. This is to vote on a open polll. Choices start from 0 (Choice 1) and up.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"votePoll","params":{"name":"Hitakashi","channel":"hitakashi","choice":"0","token":""}}]}</code></pre>
 
-<!-- MOTD -->
+<!-- //////////////
+STICKY Info
+\\\\\\\\\\\\\\\\\\\-->
+
+<h1><a name="sticky-info" class="anchor"><span class="octicon octicon-link"></span></a>Sticky Information</h1>
+<p>This section contains a dump of all the information that I have found for the dashboard options.</p>
+
 <h3>Sticky Message (Create)</h3>
 <p><strong>Sent</strong> to the chat to create the MOTD</p>
 <pre><code>5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Lalalalalala","time":"2014-06-09T02:06:18.263Z"}}]}</code></pre>
@@ -212,7 +218,9 @@ USER Information
 <pre><code>5:::{"name":"message","args":["{\"method\":\"motdMsg\",\"params\":{\"channel\":\"hitakashi\",\"name\":\"hitakashi\",\"nameColor\":\"585858\",\"time\":1402279816,\"image\":\"/static/img/channel/Hitakashi_539002d3589e8_small.png\"}}"]}</code></pre>
 
 
-<!-- Giveaway --> 
+<h1><a name="giveaway-info" class="anchor"><span class="octicon octicon-link"></span></a>Giveaway Information</h1>
+<p>This section contains a dump of all the information that I have found for the dashboard options.</p>
+
 5:::{"name":"message","args":[{"method":"createRaffle","params":{"channel":"hitakashi","question":"Giveaway Title","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1","votes":0,"$$hashKey":"00Q"},{"text":"Giveaway Options 2","votes":0,"$$hashKey":"00R"},{"text":"Giveaway Options 3","votes":0,"win":false,"$$hashKey":"02U"}],"start_time":"2014-06-09T01:32:56.646Z","nameColor":"585858"}}]}
 <br />
 <br />
