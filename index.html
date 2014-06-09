@@ -263,7 +263,7 @@ STICKY Info
 <p><strong>Sent</strong> to the chat server. It hides the giveaway in the chat and sends out a raffleMsg with status set to 'hidden'. Also sends out a winnerMsg again to the dashboard.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"hideRaffle","params":{"channel":"hitakashi"}}]}</code></pre>
 
-<h3>Raffle (Cleanup</h3>
+<h3>Raffle (Cleanup)</h3>
 <p><strong>Sent</strong> to the chat server. It cleans up the giveaway from the dashboard and channel. (I don't know why from the channel, It's also hidden). Sends out a raffleMsg with status set to 'deleted'</p>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}</code></pre>
 
