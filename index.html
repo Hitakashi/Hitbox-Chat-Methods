@@ -276,6 +276,11 @@ STICKY Info
 <p><strong>Recieved</strong> from the chat server. This shows a notification in chat saying the user has subbed to the channel.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"PlayInPuddles just subscribed to this channel","channel":"theebstream","subscriber":"PlayInPuddles","type":"subChannel","time":1406063743}}"]}</code></pre>
 
+<h3>Subscriber - Owner Message</h3>
+<p><strong>Recieved</strong> from the chat server. These are messages from the broadcaster that is a subscriber.</p>
+<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"theebstream","name":"TheEBStream","nameColor":"FF0000","text":"<img src="http://edge.vie.hitbox.tv//static/img/chat/theebstream/emotes/extrahoe.png" title="ebextrahoe" alt="" class="smiley"> /","time":1406065858,"role":"admin","isFollower":true,"isSubscriber":false,"isOwner":true,"isStaff":false,"media":false,"image":"/static/img/channel/theebstream_52d337105e5d7_small.jpg"}}"]}</code></pre>
+<small>You may be wondering why the broadcaster isn't subscriber to it's own channel? Who knows. They can still use the emotes.</small>
+
 <h3>Subscriber - Moderator Sub Message</h3>
 <p><strong>Recieved</strong> from the chat server. These are messages from moderators that are subscribers.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"theebstream","name":"DaKong","nameColor":"B40404","text":""Beats by Dre" headphones, which sell for as much as $450, only cost about $14 to make."Beats by Dre" headphones, which sell for as much as $450, only cost about $14 to make.","time":1406063336,"role":"user","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}"]}</code></pre>
