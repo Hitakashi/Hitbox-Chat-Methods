@@ -79,6 +79,10 @@ COMMON Information
 <p><strong>Received</strong></p>
 <pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitabot","nameColor":"FF0000","text":"111","time":1402040183,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false,"media":false}}"]}</code></pre>
 
+<h3>Chat Message - Cannot Chat. (Subscriber Only Mode)</h3>
+<p><strong>Recieved</strong> from the server. When you send a chatMsg you usually get another chatMsg back as basically a confirmation. This won't happen and instead get a infoMsg</p>
+<pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"Subscriber only chat active.","channel":"theebstream","timestamp":1407017266,"action":""}}"]}</code></pre>
+
 <h3>Login to chat as a guest (Anonymous)</h3>
 <p><strong>Sent</strong> to chat while logged out of an account or when you want to login anonymously. (CANNOT CHAT)</p>
 <pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"UnknownSoldier","role":"guest"}}"]}</code></pre>
@@ -136,6 +140,21 @@ MODERATOR Information
 <p><strong>Sent</strong> when you enable slow mode. Disable slow mode is time = 0</p>
 <pre><code>5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"hitakashi","time":10}}]}</code></pre>
 
+<h3>Enabled Subscriber On (Fork of slowMode)</h3>
+<p><strong>Sent</strong> when you enable Subscriber Only Mode</p>
+<pre><code>5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"theebstream","subscriber":true,"rate":0}}]}</code></pre>
+
+<h3>Subscriber Only Off</h3>
+<p><strong>Sent</strong> when you disabled Subscriber Only Mode</p>
+<pre><code>5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"theebstream","time":0}}]}</code></pre>
+
+<h3>Subscriber Only Mode Info (On)</h3>
+<p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is enabled</p>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Subscriber only mode enabled","channel":"theebstream","timestamp":1407016752,"action":"isAdmin"}}"]}</code></pre>
+
+<h3>Subscriber Only Mode Info</h3>
+<p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is disabled</p>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode disabled.","channel":"theebstream","timestamp":1407016754,"action":"isAdmin","slowTime":0}}"]}</code></pre>
 
 <!-- \\\\\\\\\\\\\\\\
 USER Information
@@ -288,6 +307,7 @@ STICKY Info
 <h3>Subscriber - User Sub Message</h3>
 <p><strong>Recieved</strong> from the chat server. These are messages from 'guests' (Viewers) that are subscribers.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"theebstream","name":"AssociateBob","nameColor":"FF8000","text":"https://www.youtube.com/watch?v=MrCPIrs90eg","time":1406063334,"role":"anon","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}"]}</code></pre>
+
 <!--<h3>
 <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
