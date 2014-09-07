@@ -130,7 +130,7 @@ MODERATOR Information
 <p>This section contains any info sent/received from the chat that differs from User information</p>
 
 <h3>Ban User (banUser)</h3>
-<p><strong>Sent</strong> when you ban a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>Receives</strong> a <strong>banList</strong> with banned users. <em>Note: If a broadcaster bans a moderator, it does remove moderator as well</em></p>
+<p><strong>Sent</strong> when you ban a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>Receives</strong> a <strong>banList</strong> with banned users. <em>Note: If a broadcaster bans a moderator, It doesn't remove mod powers.</em></p>
 <pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
 
 <h3>Unban User (unbanUser)</h3>
