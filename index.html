@@ -208,10 +208,10 @@ USER Information
 <p><strong>Received</strong> from the server. It includes information on the poll and number of votes. Status can include 'started', 'paused', and 'ended'</p>
 <pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"0"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"started","voters":[],"nameColor":"585858","subscriberOnly":false,"followerOnly":false,"votes":0}}"]}</code></pre>
 
-<p>Poll (Info with vote)</p>
+<h3>Poll (Info with vote)</h3>
 <pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"1"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"paused","voters":["Hitakashi"],"nameColor":"585858","subscriberOnly":false,"followerOnly":false,"votes":1}}"]}</code></pre>
 
-<p>Ended pollMsg</p>
+<h3>Ended pollMsg</h3>
 <pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}"]}</code></pre>
 
 <h3>Poll (Pause)</h3>
