@@ -267,7 +267,7 @@ STICKY Info
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1"},{"text":"Option 2"}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":false,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}"]}
 </code></pre>
 
-<p>Raffle (Info - Admin)</p>
+<h3>Raffle (Info - Admin)</h3>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1","count":0},{"text":"Option 2","count":0}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":true,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}"]}
 </code></pre>
 
@@ -303,7 +303,7 @@ STICKY Info
 <p><strong>Sent</strong> to the chat server. It hides the giveaway in the chat and sends out a raffleMsg with status set to 'hidden'. Also sends out a winnerMsg again to the dashboard.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"hideRaffle","params":{"channel":"hitakashi"}}]}</code></pre>
 
-<p>Raffle (Info - Deleted)</p>
+<h3>Raffle (Info - Deleted)</h3>
 <p><strong>Received</strong> from the chat server. It cleans up the giveaway from the channel.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}</code></pre>
 
