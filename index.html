@@ -202,23 +202,24 @@ USER Information
 
 <h3>Poll (Create)</h3>
 <p><strong>Sent</strong> to the chat to create a poll. I don't really understand the $$hashKey, maybe you can just send it like that, or the website replaced it before it's sent.</p>	
-<pre><code>5:::{"name":"message","args":[{"method":"createPoll","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":0,"win":false,"$$hashKey":"00M"},{"text":"Poll Option 2","votes":0,"win":false,"$$hashKey":"00N"}],"token":"","start_time":"2014-06-09T02:15:01.537Z","nameColor":"585858"}}]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"createPoll","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":0,"$$hashKey":"00Q"},{"text":"Poll Option 2","votes":0,"$$hashKey":"00R"}],"subscriberOnly":false,"followerOnly":false,"start_time":"2015-01-02T05:55:37.399Z","nameColor":"4B9188"}}]}</code></pre>
 
 <h3>Poll (Info)</h3>
 <p><strong>Received</strong> from the server. It includes information on the poll and number of votes. Status can include 'started', 'paused', and 'ended'</p>
-<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"0"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"started","voters":[],"nameColor":"585858","subscriberOnly":false,"followerOnly":false,"votes":0}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"0"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2015-01-02T05:55:37.399Z","clientID":null,"status":"started","voters":[],"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false,"votes":0}}"]}</code></pre>
 
 <h3>Poll (Info with vote)</h3>
 <pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"1"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"paused","voters":["Hitakashi"],"nameColor":"585858","subscriberOnly":false,"followerOnly":false,"votes":1}}"]}</code></pre>
 
-<h3>Ended pollMsg</h3>
-<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}"]}</code></pre>
+<h3>Poll (Vote)</h3>
+<p><strong>Sent</strong> to the chat server. This is to vote on a open polll. Choices start from 0 (Choice 1) and up.</p>
+<pre><code>5:::{"name":"message","args":[{"method":"votePoll","params":{"name":"Hitakashi","channel":"hitakashi","choice":"0","token":""}}]}</code></pre>
 
 <h3>Poll (Pause)</h3>
 <p><strong>Sent</strong> to the chat server. Once you pause a poll, you can either start it back up or end it</p>
 <pre><code>5:::{"name":"message","args":[{"method":"pausePoll","params":{"channel":"hitakashi","token":""}}]}</code></pre>
 
-<h3>Poll (Start)</h3>
+<h3>Poll (Resume)</h3>
 <p><strong>Sent</strong> to the chat server. This can only be used to start it up after a pause.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"startPoll","params":{"channel":"hitakashi","token":""}}]}</code></pre>
 
@@ -229,10 +230,6 @@ USER Information
 <h3>Poll Info (End)</h3>
 <p><strong>Received</strong> from the chat server. Tells the client the poll has ended</p>
 <pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}"]}</code></pre>
-
-<h3>Poll (Vote)</h3>
-<p><strong>Sent</strong> to the chat server. This is to vote on a open polll. Choices start from 0 (Choice 1) and up.</p>
-<pre><code>5:::{"name":"message","args":[{"method":"votePoll","params":{"name":"Hitakashi","channel":"hitakashi","choice":"0","token":""}}]}</code></pre>
 
 <!-- //////////////
 STICKY Info
