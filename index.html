@@ -260,25 +260,28 @@ STICKY Info
 
 <h3>Raffle (Create)</h3>
 <p><strong>Sent</strong> to the chat server. This is to create the poll.</p>
-<pre><code>5:::{"name":"message","args":[{"method":"createRaffle","params":{"channel":"hitakashi","question":"Giveaway Question","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1","votes":0,"$$hashKey":"00Q"},{"text":"Giveaway Option 2","votes":0,"$$hashKey":"00R"}],"start_time":"2014-06-09T03:22:49.081Z","nameColor":"585858"}}]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"createRaffle","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1","votes":0,"$$hashKey":"00U"},{"text":"Option 2","votes":0,"$$hashKey":"00V"}],"subscriberOnly":false,"followerOnly":false,"start_time":"2015-01-02T06:09:11.760Z","nameColor":"4B9188"}}]}</code></pre>
 
 <h3>Raffle (Info)</h3>
 <p><strong>Received</strong> from the chat server. This is for regular viewers, without counts for each option. Status includes 'started', 'paused', 'ended', 'hidden' and 'deleted'</p>
-<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Giveaway Question","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1"},{"text":"Giveaway Option 2"}],"start_time":"2014-06-09T03:32:25.259Z","status":"started","forAdmin":false,"nameColor":"585858"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1"},{"text":"Option 2"}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":false,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}"]}
+</code></pre>
 
 <p>Raffle (Info - Admin)</p>
-<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Giveaway Question","prize":"Giveaway Prize","choices":[{"text":"Giveaway Option 1","count":0},{"text":"Giveaway Option 2","count":0}],"start_time":"2014-06-09T03:32:25.259Z","status":"started","forAdmin":true,"nameColor":"585858"}}"]}</code></pre>
-
-<p>Raffle (Info - Deleted)</p>
-<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1","count":0},{"text":"Option 2","count":0}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":true,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}"]}
+</code></pre>
 
 <h3>Raffle (Vote)</h3>
 <p><strong>Sent</strong> to the chat server. Whenever someone votes it sends out a Viewer and Admin raffleMsg.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"voteRaffle","params":{"name":"Hitakashi","channel":"hitakashi","choice":"0"}}]}</code></pre>
 
 <h3>Raffle (Paused)</h3>
-<p><strong>Sent</strong> to the chat server. Also sends out a Viewer and Admin raffleMsg with status set to 'paused'
+<p><strong>Sent</strong> to the chat server. Also sends out a Viewer and Admin raffleMsg with status set to 'paused'</p>
 <pre><code>5:::{"name":"message","args":[{"method":"pauseRaffle","params":{"channel":"hitakashi"}}]}</code></pre>
+
+<h3>Raffle (Resume)</h3>
+<p><strong>Sent</strong> to the chat server. Also sends out a Viewer and Admin raffleMsg with status set to 'started'</p>
+<pre><code>5:::{"name":"message","args":[{"method":"startRaffle","params":{"channel":"hitakashi"}}]}</code></pre>
 
 <h3>Raffle (End)</h3>
 <p><strong>Sent</strong> to the chat server. Also sends out a Viewer and Admin raffleMsg with status set to 'ended'</p>
@@ -300,9 +303,13 @@ STICKY Info
 <p><strong>Sent</strong> to the chat server. It hides the giveaway in the chat and sends out a raffleMsg with status set to 'hidden'. Also sends out a winnerMsg again to the dashboard.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"hideRaffle","params":{"channel":"hitakashi"}}]}</code></pre>
 
-<h3>Raffle (Cleanup)</h3>
-<p><strong>Sent</strong> to the chat server. It cleans up the giveaway from the dashboard and channel. (I don't know why from the channel, It's also hidden). Sends out a raffleMsg with status set to 'deleted'</p>
+<p>Raffle (Info - Deleted)</p>
+<p><strong>Received</strong> from the chat server. It cleans up the giveaway from the channel.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}</code></pre>
+
+<h3>Raffle (Cleanup)</h3>
+<p><strong>Sent</strong> to the chat server. It resets the giveaway from the dashboard. Sends out a Raffle (Info - Deleted)</p>
+<pre><code>5:::{"name":"message","args":[{"method":"cleanupRaffle","params":{"channel":"hitakashi"}}]}</code></pre>
 
 <h1><a name="sub-info" class="anchor"><span class="octicon octicon-link"></span></a>Sub Information</h1>
 <p>This section contains information pertaining to the subscription program.</p>
