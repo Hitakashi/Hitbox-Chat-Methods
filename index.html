@@ -89,6 +89,10 @@ COMMON Information
 <p><strong>Recieved</strong> from the server. When you send a chatMsg you usually get another chatMsg back as basically a confirmation. This won't happen and instead get a infoMsg</p>
 <pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"Subscriber only chat active.","channel":"theebstream","timestamp":1407017266,"action":""}}"]}</code></pre>
 
+<h3>Login Message</h3>
+<p><strong>Recieved</strong> from the server. This is recieved when ever you successfully authenticate with the server.</p>
+<pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"hitakashi","role":"admin"}}"]}</code></pre>
+
 <h3>Login to chat as a guest (Anonymous)</h3>
 <p><strong>Sent</strong> to chat while logged out of an account or when you want to login anonymously. (CANNOT CHAT)</p>
 <pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"UnknownSoldier","role":"guest"}}"]}</code></pre>
