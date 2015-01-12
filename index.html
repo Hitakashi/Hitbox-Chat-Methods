@@ -4,9 +4,9 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -66,35 +66,36 @@ COMMON Information
 <pre><code>2::</code></pre>
 
 <h3>Join Channel (joinChannel)</h3>
-<p><strong>Sent</strong> when you join a channel.</p>
+<p><strong>Sent</strong> when you join a channel. <strong>Always</strong> use lower case channel names. The name value determines the casing of your username.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"joinChannel","params":{"channel":"hitakashi","name":"Hitakashi","token":"","isAdmin":true}}]}</code></pre>
 
 <h3>Leave Channel (partChannel)</h3>
-<p><strong>Sent</strong> when you want to part a channel.</p>
+<p><strong>Sent</strong> when you want to part a channel. <strong>Always</strong> use lower case channel names.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"partChannel","params":{"channel":"hitakashi","name":"Hitakashi"}}]}</code></pre>
 
 <h3>Informational Messages (infoMsg)</h3>
-<p><strong>Received</strong> on mod/unmod/ban/unban/timeout</p>
+<p><strong>Received</strong> on mod/unmod/ban/unban/timeout. Some actions dictate who can view them. Valid Actions: ban, kicked, isAdmin</p>
 <pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}</code></pre>
 
 <h3>Chat Message (chatMsg)</h3>
 <p><strong>Messages are limited to 255 characters.</strong></p>
-<p><strong>Sent</strong> and <strong>Received</strong> on every chat message. Includes media if broadcaster.</p>
+<p><strong>Sent</strong> and <strong>Received</strong> on every chat message. Includes image if broadcaster or subscriber.</p>
 <p><strong>Sent</strong></p>
 <pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitakashi","nameColor":"FA58F4","text":"haha"}}]}</code></pre>
-<p><strong>Received</strong></p>
-<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitabot","nameColor":"FF0000","text":"111","time":1402040183,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false,"media":false}}"]}</code></pre>
+<p><strong>Received</strong> buffer and buffersent are only sent on scrollback messages when you join a channel.</p>
+<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitakashi","nameColor":"4B9188","text":"haha","time":1421041488,"role":"admin","isFollower":true,"isSubscriber":false,"isOwner":true,"isStaff":false,"isCommunity":false,"media":false,"image":"/static/img/channel/Hitakashi_53f4e837eb388_small.png","buffer":true,"buffersent":true}}"]}</code></pre>
 
 <h3>Chat Message - Cannot Chat. (Subscriber Only Mode)</h3>
-<p><strong>Recieved</strong> from the server. When you send a chatMsg you usually get another chatMsg back as basically a confirmation. This won't happen and instead get a infoMsg</p>
+<p><strong>Received</strong> from the server. When you send a chatMsg you usually get another chatMsg back as basically a confirmation. This won't happen and instead get a infoMsg. This is only sent 
+on external WebSocket connections. The website javascript locally handles Sub Only mode.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"Subscriber only chat active.","channel":"theebstream","timestamp":1407017266,"action":""}}"]}</code></pre>
 
 <h3>Login Message</h3>
-<p><strong>Recieved</strong> from the server. This is recieved when ever you successfully authenticate with the server.</p>
+<p><strong>Received</strong> from the server. This is received when ever you successfully authenticate with the server.</p>
 <pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"hitakashi","role":"admin"}}"]}</code></pre>
 
 <h3>Login to chat as a guest (Anonymous)</h3>
-<p><strong>Sent</strong> to chat while logged out of an account or when you want to login anonymously. (CANNOT CHAT)</p>
+<p><strong>Received</strong> from chat while logged out of an account or when you want to login anonymously. (CANNOT CHAT)</p>
 <pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"UnknownSoldier","role":"guest"}}"]}</code></pre>
 
 <h3>Join channel while a guest (Anonymous)</h3>
@@ -105,8 +106,8 @@ COMMON Information
 <p>hitbox sends very little information as server messages, but hopefully they implement more as their pretty informational.</p>
 
 <h3>Stream Resource Change.</h3>
-<p><strong>Recieved</strong> from the chat server. These seem to be sent when Title/Game updates are made.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"serverMsg","params":{"channel":"hitakashi","text":{"media":{"category_id":"457","category_name":"Team Fortress 2","category_name_short":null,"category_seo_key":"team-fortress-2","category_viewers":"2","category_logo_small":null,"category_logo_large":"/static/img/games/team_fortress_2.jpg","category_updated":"2014-09-03 11:38:32","media_status":"Testing Dashboard","media_category_id":"457"}},"type":"resourceUpdate","time":1409756867}}"]}</code></pre>
+<p><strong>Received</strong> from the chat server. These seem to be sent when Title/Game updates are made.</p>
+<pre><code>5:::{"name":"message","args":["{"method":"serverMsg","params":{"channel":"hitakashi","text":{"media":{"category_id":"32401","category_name":"Mario Kart 8","category_name_short":null,"category_seo_key":"mario-kart-8","category_viewers":"16","category_media_count":"1","category_channels":null,"category_logo_small":null,"category_logo_large":"/static/img/games/2600974-12510938343_01c49da2be_o.jpg","category_updated":"2015-01-12 05:03:38","media_status":"Testing. sshhhhh","media_category_id":"32401"}},"type":"resourceUpdate","time":1421043231}}"]}</code></pre>
 
 
 <!-- \\\\\\\\\\\\\\\\
@@ -136,7 +137,7 @@ MODERATOR Information
 
 <h3>Ban User (banUser)</h3>
 <p><strong>Sent</strong> when you ban a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>Receives</strong> a <strong>banList</strong> with banned users. <em>Note: If a broadcaster bans a moderator, It doesn't remove mod powers.</em></p>
-<pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"banUser","params":{"channel":"hitakashi","name":"Hitabot"}}]}</code></pre>
 
 <h3>Unban User (unbanUser)</h3>
 <p><strong>Sent</strong> when you unban a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful. <strong>Receives</strong> a <strong>banList</strong> with banned users.</p>
@@ -152,7 +153,7 @@ MODERATOR Information
 
 <h3>Timeout User (kickUser)</h3>
 <p><strong>Sent</strong> when you timeout a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
-<pre><code>5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":""}}]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"kickUser","params":{"channel":"hitakashi","name":"Hitabot","token":"","timeout":600}}]}</code></pre>
 
 <h3>Enable Slow Mode (slowMode)</h3>
 <p><strong>Sent</strong> when you enable slow mode. Disable slow mode is time = 0</p>
@@ -166,13 +167,6 @@ MODERATOR Information
 <p><strong>Sent</strong> when you disabled Subscriber Only Mode</p>
 <pre><code>5:::{"name":"message","args":[{"method":"slowMode","params":{"channel":"theebstream","time":0}}]}</code></pre>
 
-<h3>Subscriber Only Mode Info (On)</h3>
-<p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is enabled</p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Subscriber only mode enabled","channel":"theebstream","timestamp":1407016752,"action":"isAdmin"}}"]}</code></pre>
-
-<h3>Subscriber Only Mode Info</h3>
-<p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is disabled</p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode disabled.","channel":"theebstream","timestamp":1407016754,"action":"isAdmin","slowTime":0}}"]}</code></pre>
 
 <!-- \\\\\\\\\\\\\\\\
 USER Information
@@ -186,8 +180,8 @@ USER Information
 <pre><code>5:::{"name":"message","args":[{"method":"getChannelUserList","params":{"channel":"hitakashi"}}]}</code></pre>
 
 <h3>User List (userList)</h3>
-<p><strong>Received</strong> when you send <strong>getChannelUserList</strong>. Admins can consist of a Broadcaster and Hitbox Staff. Users are Moderators. Anon are Viewers.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":1,"admin":["Hitakashi"],"user":[],"anon":["Hitabot"],"isFollower":[],"isSubscriber":[],"isStaff":[]}}}"]}</code></pre>
+<p><strong>Received</strong> when you send <strong>getChannelUserList</strong>. Admins consist of Broadcasters, Editors, Ambasadors and Staff members. Users are moderators and Anons are Viewers. Guests is the amount of unregistered users.</p>
+<pre><code>5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":null,"admin":["Hitakashi-Test","Hitakashi"],"user":[],"anon":["Claptrap"],"isFollower":["Hitakashi"],"isSubscriber":[],"isStaff":[],"isCommunity":[]}}}"]}</code></pre>
 
 <h3>Request User Info (getChannelUser)</h3>
 <p><strong>Sent</strong> when you click on a User</p>
@@ -197,9 +191,17 @@ USER Information
 <p><strong>Received</strong> when you send <strong>getChannelUser</strong></p>
 <pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</code></pre>
 
-<h3>Slow Mode Information (slowMsg)</h3>
-<p><strong>Received</strong> when slow mode is enabled/disabled or when you join a channel with slow mode enabled. <em>Note: Even if you aren't an Admin, it contains the action:isAdmin</em></p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds\","channel":"hitakashi","timestamp":1402046425,"action":"isAdmin","slowTime":10}}"]}</code></pre>
+<h3>Slow Mode Info (On)</h3>
+<p><strong>Recieved</strong> from the chat server when slow mode is enabled. Disabled: slowTime = 0</p>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds","channel":"hitakashi","timestamp":1421044036,"action":"isAdmin","slowTime":10}}"]}</code></pre>
+
+<h3>Subscriber Only Mode Info (On)</h3>
+<p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is enabled</p>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Subscriber only mode enabled","channel":"theebstream","timestamp":1407016752,"action":"isAdmin"}}"]}</code></pre>
+
+<h3>Subscriber Only Mode Info</h3>
+<p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is disabled</p>
+<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode disabled.","channel":"theebstream","timestamp":1407016754,"action":"isAdmin","slowTime":0}}"]}</code></pre>
 
 <h1><a name="poll-info" class="anchor"><span class="octicon octicon-link"></span></a>Poll Information</h1>
 <p>This section contains a dump of all the information that I have found for the dashboard options.</p>
