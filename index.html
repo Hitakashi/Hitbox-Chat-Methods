@@ -75,7 +75,7 @@ COMMON Information
 
 <h3>Informational Messages (infoMsg)</h3>
 <p><strong>Received</strong> on mod/unmod/ban/unban/timeout. Some actions dictate who can view them. Valid Actions: ban, kicked, isAdmin</p>
-<pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"infoMsg","params":{"text":"You have added Hitabot as a moderator","channel":"hitakashi","timestamp":1402039745,"action":"isAdmin"}}]}</code></pre>
 
 <h3>Chat Message (chatMsg)</h3>
 <p><strong>Messages are limited to 255 characters.</strong></p>
@@ -83,20 +83,20 @@ COMMON Information
 <p><strong>Sent</strong></p>
 <pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitakashi","nameColor":"FA58F4","text":"haha"}}]}</code></pre>
 <p><strong>Received</strong> buffer and buffersent are only sent on scrollback messages when you join a channel.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitakashi","nameColor":"4B9188","text":"haha","time":1421041488,"role":"admin","isFollower":true,"isSubscriber":false,"isOwner":true,"isStaff":false,"isCommunity":false,"media":false,"image":"/static/img/channel/Hitakashi_53f4e837eb388_small.png","buffer":true,"buffersent":true}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"hitakashi","name":"Hitakashi","nameColor":"4B9188","text":"haha","time":1421041488,"role":"admin","isFollower":true,"isSubscriber":false,"isOwner":true,"isStaff":false,"isCommunity":false,"media":false,"image":"/static/img/channel/Hitakashi_53f4e837eb388_small.png","buffer":true,"buffersent":true}}]}</code></pre>
 
 <h3>Chat Message - Cannot Chat. (Subscriber Only Mode)</h3>
 <p><strong>Received</strong> from the server. When you send a chatMsg you usually get another chatMsg back as basically a confirmation. This won't happen and instead get a infoMsg. This is only sent 
 on external WebSocket connections. The website javascript locally handles Sub Only mode.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"Subscriber only chat active.","channel":"theebstream","timestamp":1407017266,"action":""}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"infoMsg","params":{"text":"Subscriber only chat active.","channel":"theebstream","timestamp":1407017266,"action":""}}]}</code></pre>
 
 <h3>Login Message</h3>
 <p><strong>Received</strong> from the server. This is received when ever you successfully authenticate with the server.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"hitakashi","role":"admin"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"loginMsg","params":{"channel":"hitakashi","name":"hitakashi","role":"admin"}}]}</code></pre>
 
 <h3>Login to chat as a guest (Anonymous)</h3>
 <p><strong>Received</strong> from chat while logged out of an account or when you want to login anonymously. (CANNOT CHAT)</p>
-<pre><code>5:::{"name":"message","args":["{"method":"loginMsg","params":{"channel":"hitakashi","name":"UnknownSoldier","role":"guest"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"loginMsg","params":{"channel":"hitakashi","name":"UnknownSoldier","role":"guest"}}]}</code></pre>
 
 <h3>Join channel while a guest (Anonymous)</h3>
 <p><strong>Sent</strong> while logged out of an account or anonymous login. (CANNOT CHAT)</p>
@@ -107,7 +107,7 @@ on external WebSocket connections. The website javascript locally handles Sub On
 
 <h3>Stream Resource Change.</h3>
 <p><strong>Received</strong> from the chat server. These seem to be sent when Title/Game updates are made.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"serverMsg","params":{"channel":"hitakashi","text":{"media":{"category_id":"32401","category_name":"Mario Kart 8","category_name_short":null,"category_seo_key":"mario-kart-8","category_viewers":"16","category_media_count":"1","category_channels":null,"category_logo_small":null,"category_logo_large":"/static/img/games/2600974-12510938343_01c49da2be_o.jpg","category_updated":"2015-01-12 05:03:38","media_status":"Testing. sshhhhh","media_category_id":"32401"}},"type":"resourceUpdate","time":1421043231}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"serverMsg","params":{"channel":"hitakashi","text":{"media":{"category_id":"32401","category_name":"Mario Kart 8","category_name_short":null,"category_seo_key":"mario-kart-8","category_viewers":"16","category_media_count":"1","category_channels":null,"category_logo_small":null,"category_logo_large":"/static/img/games/2600974-12510938343_01c49da2be_o.jpg","category_updated":"2015-01-12 05:03:38","media_status":"Testing. sshhhhh","media_category_id":"32401"}},"type":"resourceUpdate","time":1421043231}}]}</code></pre>
 
 
 <!-- \\\\\\\\\\\\\\\\
@@ -145,11 +145,11 @@ MODERATOR Information
 
 <h3>Banned User Info (userInfo - Banned User)</h3>
 <p><strong>Received</strong> when you send <strong>getChannelUser</strong> on a banned user</p>
-<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"userInfo","params":{"channel":"hitakashi","name":"hitabot","timestamp":1402039949,"role":"banned","banned":true}}]}</code></pre>
 
 <h3>User Ban List (banList)</h3>
 <p><strong>Sent</strong> when you ban/unban a user and when there's a banned user in the room.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"banList","params":{"channel":"hitakashi","data":["hitabot"]}}]}</code></pre>
 
 <h3>Timeout User (kickUser)</h3>
 <p><strong>Sent</strong> when you timeout a user. <strong>Receives</strong> a <strong>infoMsg</strong> telling you it was successful.</p>
@@ -181,7 +181,7 @@ USER Information
 
 <h3>User List (userList)</h3>
 <p><strong>Received</strong> when you send <strong>getChannelUserList</strong>. Admins consist of Broadcasters, Editors, Ambasadors and Staff members. Users are moderators and Anons are Viewers. Guests is the amount of unregistered users.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":null,"admin":["Hitakashi-Test","Hitakashi"],"user":[],"anon":["Claptrap"],"isFollower":["Hitakashi"],"isSubscriber":[],"isStaff":[],"isCommunity":[]}}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"userList","params":{"channel":"hitakashi","data":{"Guests":null,"admin":["Hitakashi-Test","Hitakashi"],"user":[],"anon":["Claptrap"],"isFollower":["Hitakashi"],"isSubscriber":[],"isStaff":[],"isCommunity":[]}}}]}</code></pre>
 
 <h3>Request User Info (getChannelUser)</h3>
 <p><strong>Sent</strong> when you click on a User</p>
@@ -189,19 +189,19 @@ USER Information
 
 <h3>User Info (userInfo)</h3>
 <p><strong>Received</strong> when you send <strong>getChannelUser</strong></p>
-<pre><code>5:::{"name":"message","args":["{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"userInfo","params":{"channel":"hitakashi","name":"Hitabot","timestamp":1402044329,"role":"anon","isFollower":false,"isSubscriber":false,"isOwner":false,"isStaff":false}}]}</code></pre>
 
 <h3>Slow Mode Info (On)</h3>
 <p><strong>Recieved</strong> from the chat server when slow mode is enabled. Disabled: slowTime = 0</p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds","channel":"hitakashi","timestamp":1421044036,"action":"isAdmin","slowTime":10}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"slowMsg","params":{"text":"Slow mode set to 10 seconds","channel":"hitakashi","timestamp":1421044036,"action":"isAdmin","slowTime":10}}]}</code></pre>
 
 <h3>Subscriber Only Mode Info (On)</h3>
 <p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is enabled</p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Subscriber only mode enabled","channel":"theebstream","timestamp":1407016752,"action":"isAdmin"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"slowMsg","params":{"text":"Subscriber only mode enabled","channel":"theebstream","timestamp":1407016752,"action":"isAdmin"}}]}</code></pre>
 
 <h3>Subscriber Only Mode Info</h3>
 <p><strong>Recieved</strong> from the chat server when Subscriber Only Mode is disabled</p>
-<pre><code>5:::{"name":"message","args":["{"method":"slowMsg","params":{"text":"Slow mode disabled.","channel":"theebstream","timestamp":1407016754,"action":"isAdmin","slowTime":0}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"slowMsg","params":{"text":"Slow mode disabled.","channel":"theebstream","timestamp":1407016754,"action":"isAdmin","slowTime":0}}]}</code></pre>
 
 <h1><a name="poll-info" class="anchor"><span class="octicon octicon-link"></span></a>Poll Information</h1>
 <p>This section contains a dump of all the information that I have found for the dashboard options.</p>
@@ -212,10 +212,10 @@ USER Information
 
 <h3>Poll (Info)</h3>
 <p><strong>Received</strong> from the server. It includes information on the poll and number of votes. Status can include 'started', 'paused', and 'ended'</p>
-<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"0"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2015-01-02T05:55:37.399Z","clientID":null,"status":"started","voters":[],"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false,"votes":0}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"0"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2015-01-02T05:55:37.399Z","clientID":null,"status":"started","voters":[],"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false,"votes":0}}]}</code></pre>
 
 <h3>Poll (Info with vote)</h3>
-<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"1"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"paused","voters":["Hitakashi"],"nameColor":"585858","subscriberOnly":false,"followerOnly":false,"votes":1}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"pollMsg","params":{"channel":"hitakashi","question":"Poll Question","choices":[{"text":"Poll Option 1","votes":"1"},{"text":"Poll Option 2","votes":"0"}],"start_time":"2014-06-09T02:56:30.860Z","clientID":null,"status":"paused","voters":["Hitakashi"],"nameColor":"585858","subscriberOnly":false,"followerOnly":false,"votes":1}}]}</code></pre>
 
 <h3>Poll (Vote)</h3>
 <p><strong>Sent</strong> to the chat server. This is to vote on a open polll. Choices start from 0 (Choice 1) and up.</p>
@@ -235,7 +235,7 @@ USER Information
 
 <h3>Poll Info (End)</h3>
 <p><strong>Received</strong> from the chat server. Tells the client the poll has ended</p>
-<pre><code>5:::{"name":"message","args":["{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"pollMsg","params":{"channel":"hitakashi","status":"ended"}}]}</code></pre>
 
 <!-- //////////////
 STICKY Info
@@ -250,7 +250,7 @@ STICKY Info
 
 <h3>Sticky Message (View)</h3>
 <p><strong>Received</strong> from the chat. This is basically sent to everyone in chat. It's also sent inside the dashboard when you create the Sticky</p>
-<pre><code>5:::{"name":"message","args":["{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Lalalalalala","time":1402279577,"image":"/static/img/channel/Hitakashi_539002d3589e8_small.png"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","text":"Lalalalalala","time":1402279577,"image":"/static/img/channel/Hitakashi_539002d3589e8_small.png"}}]}</code></pre>
 
 <h3>Sticky Message (Delete)</h3>
 <p><strong>Sent</strong> to the chat to delete the sticky message. You do not have to include the time option.</p>
@@ -258,7 +258,7 @@ STICKY Info
 
 <h3>Sticky Message (Cleared)</h3>
 <p><strong>Received</strong> from the chat. This is sent to everyone in chat to clear the Sticky Message</p>
-<pre><code>5:::{"name":"message","args":["{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","time":1402279816,"image":"/static/img/channel/Hitakashi_539002d3589e8_small.png"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"motdMsg","params":{"channel":"hitakashi","name":"hitakashi","nameColor":"585858","time":1402279816,"image":"/static/img/channel/Hitakashi_539002d3589e8_small.png"}}]}</code></pre>
 
 
 <h1><a name="giveaway-info" class="anchor"><span class="octicon octicon-link"></span></a>Giveaway Information</h1>
@@ -270,11 +270,11 @@ STICKY Info
 
 <h3>Raffle (Info)</h3>
 <p><strong>Received</strong> from the chat server. This is for regular viewers, without counts for each option. Status includes 'started', 'paused', 'ended', 'hidden' and 'deleted'</p>
-<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1"},{"text":"Option 2"}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":false,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}"]}
+<pre><code>5:::{"name":"message","args":[{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1"},{"text":"Option 2"}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":false,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}]}
 </code></pre>
 
 <h3>Raffle (Info - Admin)</h3>
-<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1","count":0},{"text":"Option 2","count":0}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":true,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}"]}
+<pre><code>5:::{"name":"message","args":[{"method":"raffleMsg","params":{"channel":"hitakashi","question":"Question","prize":"Prize","choices":[{"text":"Option 1","count":0},{"text":"Option 2","count":0}],"start_time":"2015-01-02T06:09:11.760Z","status":"started","forAdmin":true,"nameColor":"4B9188","subscriberOnly":false,"followerOnly":false}}]}
 </code></pre>
 
 <h3>Raffle (Vote)</h3>
@@ -299,11 +299,11 @@ STICKY Info
 
 <h3>Raffle (Info - Viewer)</h3>
 <p><strong>Received</strong> from the chat server. It sets the winners chat to include "You won! *channel name* got your email and will contact you.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"winnerMsg","params":{"channel":"hitakashi","winner_name":"Hitakashi","winner_picked":true,"forAdmin":false,"answer":0}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"winnerMsg","params":{"channel":"hitakashi","winner_name":"Hitakashi","winner_picked":true,"forAdmin":false,"answer":0}}]}</code></pre>
 
 <h3>Raffle (Info - Admin)</h3>
 <p><strong>Received</strong> from the chat server. It sets the dashboard to include the winners name and email.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"winnerMsg","params":{"channel":"hitakashi","winner_name":"Hitakashi","winner_email":"*WINNER EMAIL*","winner_picked":true,"forAdmin":true,"answer":0}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"winnerMsg","params":{"channel":"hitakashi","winner_name":"Hitakashi","winner_email":"*WINNER EMAIL*","winner_picked":true,"forAdmin":true,"answer":0}}]}</code></pre>
 
 <h3>Raffle (Hide)</h3>
 <p><strong>Sent</strong> to the chat server. It hides the giveaway in the chat and sends out a raffleMsg with status set to 'hidden'. Also sends out a winnerMsg again to the dashboard.</p>
@@ -311,7 +311,7 @@ STICKY Info
 
 <h3>Raffle (Info - Deleted)</h3>
 <p><strong>Received</strong> from the chat server. It cleans up the giveaway from the channel.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"raffleMsg","params":{"status":"delete"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"raffleMsg","params":{"status":"delete"}}]}</code></pre>
 
 <h3>Raffle (Cleanup)</h3>
 <p><strong>Sent</strong> to the chat server. It resets the giveaway from the dashboard. Sends out a Raffle (Info - Deleted)</p>
@@ -322,20 +322,20 @@ STICKY Info
 
 <h3>Subscriber - New Sub</h3>
 <p><strong>Recieved</strong> from the chat server. This shows a notification in chat saying the user has subbed to the channel.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"infoMsg","params":{"text":"PlayInPuddles just subscribed to this channel","channel":"theebstream","subscriber":"PlayInPuddles","type":"subChannel","time":1406063743}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"infoMsg","params":{"text":"PlayInPuddles just subscribed to this channel","channel":"theebstream","subscriber":"PlayInPuddles","type":"subChannel","time":1406063743}}]}</code></pre>
 
 <h3>Subscriber - Owner Message</h3>
 <p><strong>Recieved</strong> from the chat server. These are messages from the broadcaster that is a subscriber.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"theebstream","name":"TheEBStream","nameColor":"FF0000","text":"Message Text Here.","time":1406065858,"role":"admin","isFollower":true,"isSubscriber":false,"isOwner":true,"isStaff":false,"media":false,"image":"/static/img/channel/theebstream_52d337105e5d7_small.jpg"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"theebstream","name":"TheEBStream","nameColor":"FF0000","text":"Message Text Here.","time":1406065858,"role":"admin","isFollower":true,"isSubscriber":false,"isOwner":true,"isStaff":false,"media":false,"image":"/static/img/channel/theebstream_52d337105e5d7_small.jpg"}}]}</code></pre>
 <small>You may be wondering why the broadcaster isn't subscriber to it's own channel? Who knows. They can still use the emotes.</small>
 
 <h3>Subscriber - Moderator Sub Message</h3>
 <p><strong>Recieved</strong> from the chat server. These are messages from moderators that are subscribers.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"theebstream","name":"DaKong","nameColor":"B40404","text":""Beats by Dre" headphones, which sell for as much as $450, only cost about $14 to make."Beats by Dre" headphones, which sell for as much as $450, only cost about $14 to make.","time":1406063336,"role":"user","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"theebstream","name":"DaKong","nameColor":"B40404","text":""Beats by Dre" headphones, which sell for as much as $450, only cost about $14 to make."Beats by Dre" headphones, which sell for as much as $450, only cost about $14 to make.","time":1406063336,"role":"user","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}]}</code></pre>
 
 <h3>Subscriber - User Sub Message</h3>
 <p><strong>Recieved</strong> from the chat server. These are messages from 'guests' (Viewers) that are subscribers.</p>
-<pre><code>5:::{"name":"message","args":["{"method":"chatMsg","params":{"channel":"theebstream","name":"AssociateBob","nameColor":"FF8000","text":"https://www.youtube.com/watch?v=MrCPIrs90eg","time":1406063334,"role":"anon","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}"]}</code></pre>
+<pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"theebstream","name":"AssociateBob","nameColor":"FF8000","text":"https://www.youtube.com/watch?v=MrCPIrs90eg","time":1406063334,"role":"anon","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}]}</code></pre>
 
 <!--<h3>
 <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
