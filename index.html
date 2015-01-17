@@ -33,7 +33,7 @@
         <section id="main_content">
 		<div style="text-align:center"><h3><a href="#common-info">Common Information</a> - <a href="#broadcaster-info">Broadcaster Information</a> - <a href="#moderator-info">Moderator Information</a> - <a href="#user-info">User Information</a></h3></div>
           	<div style="text-align:center"><h3><a href="#poll-info">Poll Information</a> - <a href="#sticky-info">Sticky Information</a> - <a href="#giveaway-info">Giveaway Information</a> - <a href="#sub-info">Subscriber Information</a></h3></div>
-          	<div style="text-align:center"><h3><a href="#server-info">Server Information</a></h3></div>
+          	<div style="text-align:center"><h3><a href="#server-info">Server Information</a> - <a href="#viewer-info">Viewers Number Info</a></h3></div>
           	<!--<div style="text-align:center"><h3>Hitbox changed how commands are sent and receieved by the Client/Server, This means most (if not all) of the Information below is OUT OF DATE.</h3></div>-->
           <!--<h3>
 <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
@@ -336,6 +336,21 @@ STICKY Info
 <h3>Subscriber - User Sub Message</h3>
 <p><strong>Recieved</strong> from the chat server. These are messages from 'guests' (Viewers) that are subscribers.</p>
 <pre><code>5:::{"name":"message","args":[{"method":"chatMsg","params":{"channel":"theebstream","name":"AssociateBob","nameColor":"FF8000","text":"https://www.youtube.com/watch?v=MrCPIrs90eg","time":1406063334,"role":"anon","isFollower":true,"isSubscriber":true,"isOwner":false,"isStaff":false,"media":false,"image":"/static/img/chat/theebstream/badge.png"}}]}</code></pre>
+
+<h1><a name="viewer-info" class="anchor"><span class="octicon octicon-link"></span></a>Viewer Information</h1>
+<p>This section contains information on the Viewer Websocket Server which returns infoMsg with viewer counts</p>
+
+<p>To get started you need to initiate a conection to the '<a href="/Hitakashi/Hitbox-API/blob/master/media/player_config.md">Player Config API</a>' and grab the values `wsUrl`, `wsChannel`, `wsToken`, `userName` and `uuid` from plugins->pingback object.</p>
+
+<p>Once you have those values you can initiate a WebSocket connection to `wsUrl` and send the following message:</p>
+
+<pre><code>
+{"method":"joinChannel","params":{"channel":"","name":"","token":"", "country":"","uuid":"","isSubscriber":"false","isFollower":"false","embed":"false","referrer":""}}</code></pre>
+
+<p>`channel` = `wsChannel`
+`name` = `userName`
+`token` = `wsToken`
+`uuid` = `uuid`</p>
 
 <!--<h3>
 <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
