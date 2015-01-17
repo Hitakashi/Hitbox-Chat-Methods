@@ -346,13 +346,16 @@ STICKY Info
 
 <pre><code>{"method":"joinChannel","params":{"channel":"","name":"","token":"", "country":"","uuid":"","isSubscriber":"false","isFollower":"false","embed":"false","referrer":""}}</code></pre>
 
-<p>`channel` = `wsChannel`
-
-`name` = `userName`
-
-`token` = `wsToken`
-
+<p>`channel` = `wsChannel` </br>
+`name` = `userName`</br>
+`token` = `wsToken`</br>
 `uuid` = `uuid`</p>
+
+<p>You will recieve the following message every time the viewer counts are changed: </p>
+
+<pre><code>{"method":"infoMsg","params":{"channel":"hitakashi","viewers":1,"subscribers":0,"followers":1,"registered":1,"embed":0,"online":false}}</code></pre>
+
+<p>As far as I know, offline chanels stats look like it returns the last amount of viewers when it went offline.</p>
 
 <!--<h3>
 <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
